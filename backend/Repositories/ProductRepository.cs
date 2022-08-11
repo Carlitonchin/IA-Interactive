@@ -10,5 +10,10 @@ namespace backend.Repositories
         }
 
         private List<Product> _db;
+
+        public List<Product> GetProducts()
+        {
+            return this._db;
+        }
     }
 }
