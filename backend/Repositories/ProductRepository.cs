@@ -11,9 +11,9 @@ namespace backend.Repositories
 
         private List<Product> _db;
 
-        public List<Product> GetProducts()
+        public IEnumerable<Product> GetProducts()
         {
-            return this._db;
+            return this._db.Where(p=>!p.Deleted);
         }
 
         public void CreateProduct(Product product)
@@ -22,6 +22,11 @@ namespace backend.Repositories
         }
 
         public Product? FindBySKU(string? sku)
+        {
+            return this._db.Where(p=>!p.Deleted).FirstOrDefault(p=>p.SKU == sku);
+        }
+
+        public Product? FindActiveAndDeleted(string? sku)
         {
             return this._db.FirstOrDefault(p=>p.SKU == sku);
         }
@@ -33,7 +38,7 @@ namespace backend.Repositories
 
         public void DeleteProduct(Product p)
         {
-            this._db.Remove(p);
+            p.Delete();
         }
     }
 }

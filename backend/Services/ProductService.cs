@@ -12,7 +12,7 @@ namespace backend.Services
 
         private ProductRepository _repo;
 
-        public List<Product> GetProducts()
+        public IEnumerable<Product> GetProducts()
         {
             return this._repo.GetProducts();
         }
@@ -25,6 +25,11 @@ namespace backend.Services
         public Product? FindBySKU(string? sku)
         {
             return this._repo.FindBySKU(sku);
+        }
+
+        public Product? FindActiveAndDeleted(string? sku)
+        {
+            return this._repo.FindActiveAndDeleted(sku);
         }
 
         public void ModifyStock(Product p, int cant)

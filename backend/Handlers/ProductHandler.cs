@@ -23,9 +23,12 @@ namespace backend.Handlers
 
             app.MapPut(this.urlbase + "/update-stock",
             (UpdateStockRequest body) => ModifyStock(body));
+
+            app.MapDelete(this.urlbase + "/delete/{sku}",
+            (string? sku) => DeleteProduct(sku));
         }
 
-        public List<Product> GetProducts()
+        public IEnumerable<Product> GetProducts()
         {
             return this._serv.GetProducts();
         }
@@ -38,7 +41,7 @@ namespace backend.Handlers
                 return Results.BadRequest(err);
 
             //validation for duplicate sku
-            if(this._serv.FindBySKU(product.SKU) != null)
+            if(this._serv.FindActiveAndDeleted(product.SKU) != null)
             {
                 return Results.BadRequest(new Error($"sku {product.SKU} already exists"));
             }
