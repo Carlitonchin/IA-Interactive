@@ -16,10 +16,14 @@ namespace backend.Repositories
             return this._db;
         }
 
-        public Product CreateProduct(Product product)
+        public void CreateProduct(Product product)
         {
             this._db.Add(product);
-            return product;
+        }
+
+        public Product FindBySKU(string sku)
+        {
+            return this._db.FirstOrDefault(p=>p.SKU == sku);
         }
     }
 }

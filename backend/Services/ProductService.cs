@@ -1,5 +1,6 @@
 using backend.Repositories;
 using backend.Models;
+using backend.Errors;
 
 namespace backend.Services
 {
@@ -17,9 +18,14 @@ namespace backend.Services
             return this._repo.GetProducts();
         }
 
-        public Product CreateProduct(Product product)
+        public void CreateProduct(Product product)
         {
-            return this._repo.CreateProduct(product);
+            this._repo.CreateProduct(product);
+        }
+
+        public Product FindBySKU(string sku)
+        {
+            return this._repo.FindBySKU(sku);
         }
     }
 }
