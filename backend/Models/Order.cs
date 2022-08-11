@@ -1,3 +1,5 @@
+using backend.Errors;
+
 namespace backend.Models
 {
 
@@ -9,7 +11,7 @@ namespace backend.Models
         Canceled
     }
 
-    public class Order
+    public class Order : IValidable
     {
         public Order(int id, Status status)
         {
@@ -19,5 +21,10 @@ namespace backend.Models
 
         public int Id { get; private set; }
         public Status Status { get; set; }
+
+        public Error Validate()
+        {
+            return null;
+        }
     }
 }

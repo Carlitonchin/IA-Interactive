@@ -1,6 +1,8 @@
+using backend.Errors;
+
 namespace backend.Models
 {
-    public class OrderProducts
+    public class OrderProducts : IValidable
     {
         public OrderProducts(int order_id, string product_sku, int cant)
         {
@@ -12,5 +14,10 @@ namespace backend.Models
         public int OrderId { get; private set; } // reference to an order
         public string ProductSKU { get; private set; } // reference to an Product SKU
         public int Cant {get; private set;} // how many items of this product there are in the order
+
+        public Error Validate()
+        {
+            return null;
+        }
     }
 }
