@@ -4,6 +4,7 @@ namespace backend.Models
 {
 
     public enum Status{
+        // status "Canceled" must have to be the last in this list
         Pending,
         InProcess,
         Completed,

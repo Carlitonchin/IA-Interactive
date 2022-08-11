@@ -29,5 +29,15 @@ namespace backend.Services
 
             return order;
         }
+
+        public Order? FindOrderById(int id)
+        {
+            return this._repoOrder.FindOrderById(id);
+        }
+
+        public Order ChangeOrderStatus(Order order)
+        {
+            return this._repoOrder.ChangeOrderStatus(order);
+        }
     }
 }

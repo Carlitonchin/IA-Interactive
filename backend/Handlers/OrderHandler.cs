@@ -24,6 +24,8 @@ namespace backend.Handlers
 
             app.MapPost(urlbase + "/new",
             (List<CreateOrderRequest> products) => CreateOrder(products));
+
+            app.MapPut(urlbase + "/change-status/{order_id}", (int? order_id) => ChangeStatus(order_id));
         }
 
         public List<Order> GetOrders()
@@ -63,5 +65,25 @@ namespace backend.Handlers
             var order = this._orderServ.CreateOrder(orderList.GetOrderProducts());
             return Results.Created(urlbase, order);
         }
+
+        public IResult ChangeStatus(int? order_id)
+        {
+            if(order_id == null)
+                return Results.BadRequest(new Error("order_id is required"));
+
+            var order = this._orderServ.FindOrderById((int)order_id);
+
+            if(order == null)
+                return Results.NotFound(new Error($"order_id = {order_id} does not exist"));
+
+            if(order.Status == Status.Canceled)
+                return Results.BadRequest(new Error("An canceled order cannot change his status"));
+
+            order = this._orderServ.ChangeOrderStatus(order);
+
+            return Results.Ok(order);
+
+        }
+
     }
 }

@@ -38,5 +38,16 @@ namespace backend.Repositories
             this._db.Add(order);
             return order;
         }
+
+        public Order? FindOrderById(int id)
+        {
+            return this._db.FirstOrDefault(o=>o.Id == id);
+        }
+
+        public Order ChangeOrderStatus(Order order)
+        {
+            order.Status++;
+            return order;
+        }
     }
 }
