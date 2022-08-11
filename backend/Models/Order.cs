@@ -22,7 +22,7 @@ namespace backend.Models
         public int Id { get; private set; }
         public Status Status { get; set; }
 
-        public Error Validate()
+        public Error? Validate()
         {
             return null;
         }

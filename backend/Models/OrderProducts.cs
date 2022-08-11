@@ -15,7 +15,7 @@ namespace backend.Models
         public string ProductSKU { get; private set; } // reference to an Product SKU
         public int Cant {get; private set;} // how many items of this product there are in the order
 
-        public Error Validate()
+        public Error? Validate()
         {
             return null;
         }

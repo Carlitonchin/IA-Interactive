@@ -23,7 +23,7 @@ namespace backend.Services
             this._repo.CreateProduct(product);
         }
 
-        public Product FindBySKU(string sku)
+        public Product? FindBySKU(string? sku)
         {
             return this._repo.FindBySKU(sku);
         }
@@ -31,6 +31,11 @@ namespace backend.Services
         public void ModifyStock(Product p, int cant)
         {
             this._repo.ModifyStock(p, cant);
+        }
+
+        public void DeleteProduct(Product p)
+        {
+            this._repo.DeleteProduct(p);
         }
     }
 }

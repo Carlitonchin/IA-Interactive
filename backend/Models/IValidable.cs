@@ -3,6 +3,6 @@ namespace backend.Models
 {
     public interface IValidable
     {
-        public Error Validate();
+        public Error? Validate();
     }
 }

@@ -68,5 +68,20 @@ namespace backend.Handlers
 
             return Results.NoContent();
         }
+
+        public IResult DeleteProduct(string? sku)
+        {
+            if(Validate.EmptyOrNull(sku))
+                return Results.BadRequest(new Error("sku is required"));
+
+            var p = this._serv.FindBySKU(sku);
+
+            if(p == null)
+                return Results.NotFound(new Error("sku not found"));
+
+            this._serv.DeleteProduct(p);
+
+            return Results.Ok(p);
+        }
     }
 }

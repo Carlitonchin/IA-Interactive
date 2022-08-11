@@ -5,18 +5,18 @@ namespace backend.Models
 {
     public class Product : IValidable
     {
-        public string SKU { get; private set; }
-        public string Name { get; set; }
+        public string? SKU { get; private set; }
+        public string? Name { get; set; }
         public int? Stock { get; set; }
 
-        public Product(string sku, string name, int? stock)
+        public Product(string? sku, string? name, int? stock)
         {
             this.SKU = sku;
             this.Name = name;
             this.Stock = stock;
         }
 
-        public Error Validate()
+        public Error? Validate()
         {
             if(Utils.Validate.EmptyOrNull(this.SKU))
                 return new Error("sku is required");

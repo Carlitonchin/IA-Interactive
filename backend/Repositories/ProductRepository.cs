@@ -21,7 +21,7 @@ namespace backend.Repositories
             this._db.Add(product);
         }
 
-        public Product FindBySKU(string sku)
+        public Product? FindBySKU(string? sku)
         {
             return this._db.FirstOrDefault(p=>p.SKU == sku);
         }
@@ -29,6 +29,11 @@ namespace backend.Repositories
         public void ModifyStock(Product p, int cant)
         {
             p.Stock += cant;
+        }
+
+        public void DeleteProduct(Product p)
+        {
+            this._db.Remove(p);
         }
     }
 }
