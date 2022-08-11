@@ -7,7 +7,7 @@ namespace backend.Services
         public Service(Repository repository)
         {
             this.ProductService = new ProductService(repository.ProductRepository);
-            this.OrderService = new OrderService(repository.OrderRepository);
+            this.OrderService = new OrderService(repository.OrderRepository, repository.ProductRepository);
         }
         public ProductService ProductService { get; private set; }
         public OrderService OrderService {get; private set;}

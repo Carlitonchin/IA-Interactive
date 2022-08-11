@@ -7,7 +7,8 @@ namespace backend.Handlers
         public Handler(Service service, WebApplication app)
         {
             this._productHandler = new ProductHandler(service.ProductService, app);
-            this._orderHandler = new OrderHandler(service.OrderService, app);
+
+            this._orderHandler = new OrderHandler(service.OrderService, service.ProductService, app);
         }
         private ProductHandler _productHandler;
         private OrderHandler _orderHandler;

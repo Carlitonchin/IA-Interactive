@@ -53,17 +53,17 @@ namespace backend.Models
     }
     public class Order : IValidable
     {
-        public Order(int id, Status status)
+        public Order(int id, Status status, IEnumerable<OrderProduct> list)
         {
             this.Id = id;
             this.Status = status;
-            this.products = new ListOrderProduct();
+            this.products = list;
         }
 
         public int Id { get; private set; }
         public Status Status { get; set; }
 
-        public ListOrderProduct products { get; private set; }
+        public IEnumerable<OrderProduct> products { get; private set; }
         public Error? Validate()
         {
             return null;
