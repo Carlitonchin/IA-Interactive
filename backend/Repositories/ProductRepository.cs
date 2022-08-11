@@ -15,5 +15,11 @@ namespace backend.Repositories
         {
             return this._db;
         }
+
+        public Product CreateProduct(Product product)
+        {
+            this._db.Add(product);
+            return product;
+        }
     }
 }

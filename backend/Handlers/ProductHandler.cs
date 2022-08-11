@@ -14,13 +14,20 @@ namespace backend.Handlers
         }
         public void endpoints(WebApplication app)
         {
-            // /products
             app.MapGet(this.urlbase, GetProducts);
+
+            app.MapPost(this.urlbase + "/new", (Product p) => CreateProduct(p));
         }
 
         public List<Product> GetProducts()
         {
             return this._serv.GetProducts();
+        }
+
+        public IResult CreateProduct(Product product)
+        {
+            var p = this._serv.CreateProduct(product);
+            return Results.Created(urlbase, p.SKU);
         }
     }
 }
