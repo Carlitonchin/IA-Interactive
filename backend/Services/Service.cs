@@ -7,8 +7,10 @@ namespace backend.Services
         public Service(Repository repository)
         {
             this._repo = repository;
+            this.ProductService = new ProductService(this._repo);
         }
 
         private Repository _repo;
+        public ProductService ProductService { get; private set; }
     }
 }

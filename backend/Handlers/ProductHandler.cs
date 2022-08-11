@@ -2,11 +2,11 @@ using backend.Services;
 
 namespace backend.Handlers
 {
-    public class ProductHandler : IHandler
+    internal class ProductHandler : IHandler
     {
-        private Service _serv;
+        private ProductService _serv;
 
-        public ProductHandler(Service service, WebApplication app)
+        public ProductHandler(ProductService service, WebApplication app)
         {
             this._serv = service;
             this._endpoints(app);
