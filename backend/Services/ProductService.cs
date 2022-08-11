@@ -27,5 +27,10 @@ namespace backend.Services
         {
             return this._repo.FindBySKU(sku);
         }
+
+        public void ModifyStock(Product p, int cant)
+        {
+            this._repo.ModifyStock(p, cant);
+        }
     }
 }

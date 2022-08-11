@@ -25,5 +25,10 @@ namespace backend.Repositories
         {
             return this._db.FirstOrDefault(p=>p.SKU == sku);
         }
+
+        public void ModifyStock(Product p, int cant)
+        {
+            p.Stock += cant;
+        }
     }
 }

@@ -1,6 +1,7 @@
 using backend.Services;
 using backend.Models;
 using backend.Errors;
+using backend.Utils;
 
 namespace backend.Handlers
 {
@@ -19,6 +20,9 @@ namespace backend.Handlers
             app.MapGet(this.urlbase, GetProducts);
 
             app.MapPost(this.urlbase + "/new", (Product p) => CreateProduct(p));
+
+            app.MapPut(this.urlbase + "/update-stock",
+            (UpdateStockRequest body) => ModifyStock(body));
         }
 
         public List<Product> GetProducts()
@@ -42,6 +46,27 @@ namespace backend.Handlers
             this._serv.CreateProduct(product);
 
             return Results.Created(urlbase, product.SKU);
+        }
+
+        public IResult ModifyStock(UpdateStockRequest body)
+        {
+            if(Validate.EmptyOrNull(body.sku))
+                return Results.BadRequest(new Error("sku is required"));
+
+            if(body.cant == null)
+                return Results.BadRequest(new Error("cant is required"));
+
+            var p = this._serv.FindBySKU(body.sku);
+
+            if(p == null)
+                return Results.NotFound(new Error("sku not found"));
+
+            if(p.Stock + body.cant < 0)
+                return Results.BadRequest("the stock field must be non negative");
+
+            this._serv.ModifyStock(p, (int)body.cant);
+
+            return Results.NoContent();
         }
     }
 }
