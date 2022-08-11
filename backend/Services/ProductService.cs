@@ -1,6 +1,5 @@
 using backend.Repositories;
 using backend.Models;
-using backend.Errors;
 
 namespace backend.Services
 {
