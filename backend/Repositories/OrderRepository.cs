@@ -49,5 +49,11 @@ namespace backend.Repositories
             order.Status++;
             return order;
         }
+
+        public Order CancelOrder(Order order)
+        {
+            order.Status = Status.Canceled;
+            return order;
+        }
     }
 }

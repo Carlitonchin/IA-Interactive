@@ -39,5 +39,22 @@ namespace backend.Services
         {
             return this._repoOrder.ChangeOrderStatus(order);
         }
+
+        public Order CancelOrder(Order order)
+        {
+            bool pending = order.Status == Status.Pending;
+            order = this._repoOrder.CancelOrder(order);
+
+            //only if order was in pending, products are retorned to stock
+            if(pending)
+            {
+                foreach (var item in order.products)
+                {
+                    this._repoProducts.ModifyStock(item.product, item.cant);
+                }
+            }
+
+            return order;
+        }
     }
 }
