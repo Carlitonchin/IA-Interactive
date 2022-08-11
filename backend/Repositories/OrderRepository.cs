@@ -9,5 +9,10 @@ namespace backend.Repositories
         {
             this._db = orders;
         }
+
+        public List<Order> GetOrders()
+        {
+            return this._db;
+        }
     }
 }

@@ -1,4 +1,5 @@
 using backend.Repositories;
+using backend.Models;
 
 namespace backend.Services
 {
@@ -8,6 +9,11 @@ namespace backend.Services
         public OrderService(OrderRepository repo)
         {
             this._repo = repo;
+        }
+
+        public List<Order> GetOrders()
+        {
+            return this._repo.GetOrders();
         }
     }
 }
