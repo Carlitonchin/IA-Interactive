@@ -6,11 +6,10 @@ namespace backend.Services
     {
         public Service(Repository repository)
         {
-            this._repo = repository;
-            this.ProductService = new ProductService(this._repo.ProductRepository);
+            this.ProductService = new ProductService(repository.ProductRepository);
+            this.OrderService = new OrderService(repository.OrderRepository);
         }
-
-        private Repository _repo;
         public ProductService ProductService { get; private set; }
+        public OrderService OrderService {get; private set;}
     }
 }
