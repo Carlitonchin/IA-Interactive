@@ -1,5 +1,7 @@
 using backend.Services;
 using backend.Models;
+using backend.Errors;
+
 namespace backend.Handlers
 {
     internal class ProductHandler : IHandler
@@ -26,8 +28,20 @@ namespace backend.Handlers
 
         public IResult CreateProduct(Product product)
         {
-            var p = this._serv.CreateProduct(product);
-            return Results.Created(urlbase, p.SKU);
+            //validation for non empty fields
+            var err = product.Validate();
+            if(err != null)
+                return Results.BadRequest(err);
+
+            //validation for duplicate sku
+            if(this._serv.FindBySKU(product.SKU) != null)
+            {
+                return Results.BadRequest(new Error($"sku {product.SKU} already exists"));
+            }
+
+            this._serv.CreateProduct(product);
+
+            return Results.Created(urlbase, product.SKU);
         }
     }
 }
