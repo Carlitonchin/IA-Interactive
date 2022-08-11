@@ -1,5 +1,6 @@
 using backend.Services;
 using backend.Models;
+using backend.Utils;
 
 namespace backend.Handlers
 {
@@ -17,11 +18,19 @@ namespace backend.Handlers
         public void endpoints(WebApplication app)
         {
             app.MapGet(urlbase, GetOrders);
+
+            app.MapPost(urlbase + "/new",
+            (List<CreateOrderRequest> products) => CreateOrder(products));
         }
 
         public List<Order> GetOrders()
         {
             return this._orderServ.GetOrders();
+        }
+
+        public List<CreateOrderRequest> CreateOrder(List<CreateOrderRequest> products)
+        {
+            return products;
         }
     }
 }
