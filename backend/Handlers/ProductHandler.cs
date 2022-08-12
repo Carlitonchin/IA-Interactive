@@ -65,7 +65,7 @@ namespace backend.Handlers
                 return Results.NotFound(new Error("sku not found"));
 
             if(p.Stock + body.cant < 0)
-                return Results.BadRequest("the stock field must be non negative");
+                return Results.BadRequest(new Error("the stock field must be non negative"));
 
             this._serv.ModifyStock(p, (int)body.cant);
 
