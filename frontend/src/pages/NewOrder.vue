@@ -6,6 +6,7 @@
     const order = ref([])
     const sku_name = {}
     const url_get_products = "https://localhost:7009/products"
+    const add_order_url = "https://localhost:7009/orders/new"
 
     onMounted(()=>
     {
@@ -69,10 +70,39 @@
         })
     }
 
+    function add_order()
+    {
+        fetch(add_order_url, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(order.value)
+  })
+        .then(res=>{
+            if(res.status >= 200 && res.status < 300)
+            {
+                res.json().then(r =>
+                {
+                    document.getElementById("orders_link").click();
+                })
+            }
+            else
+            {
+                res.json().then(err => error.value = err.error)
+                .catch(err=> error.value = "Error at json binding")
+            }
+        })
+        .catch(err=>error.value = err);
+
+    }
+
 </script>
 
 <template>
 <div id="container">
+    <a href="/orders/" id="orders_link" style="display:none;"></a>
     <div id="container-order">
         <h3>Order</h3>
         <div v-if="!order.length">No products</div>
@@ -88,7 +118,11 @@
 
         </table>
 
-        <div v-if="order.length" class="button" id="add-order">Add order</div>
+        <div
+        v-if="order.length"
+        class="button" id="add-order"
+        @click="add_order()"
+        >Add order</div>
     </div>
      <table id="container-products" v-if="products.length">
       <tr id="head">

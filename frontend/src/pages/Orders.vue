@@ -251,12 +251,14 @@ cursor: pointer;
     justify-content: space-between;
 }
 
+
 .products-text
 {
     border-bottom: 1px solid black;
     margin-bottom: 0.1rem;
     padding-left: 0.3rem;
     padding-right: 0.3rem;
+    font-weight: 700;
 }
 
 .order-actions
