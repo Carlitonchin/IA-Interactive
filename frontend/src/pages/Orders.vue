@@ -1,6 +1,8 @@
 <script setup>
     import {ref, onMounted} from 'vue'
     const url_get = "https://localhost:7009/orders"
+    const url_change_status = "https://localhost:7009/orders/change-status/"
+    const url_cancel = "https://localhost:7009/orders/cancel/"
 
     const orders = ref([])
     const error = ref("")
@@ -26,12 +28,82 @@
         })
         .catch(err=> error.value = err)
     })
+
+    function change_status(e, order_id)
+    {
+        fetch(url_change_status + order_id,
+        {
+            method:"PUT",
+        }
+        )
+        .then(res=>
+        {
+            if(res.status >= 200 && res.status < 300)
+            {
+
+                res.json().then(res=>
+                {
+                    orders.value = orders.value.map(item=>
+                    {
+                        if(item.id == order_id)
+                        {
+                                item.status++;
+
+                        }
+
+                        return item;
+
+                    })
+                })
+            }
+            else
+                res.json().then(err=>alert("then mal")).catch(err=>error.value = "Error binding json")
+
+        }
+        )
+        .catch(err=> error.value = err)
+    }
+
+    function cancel(e, order_id)
+    {
+        fetch(url_cancel + order_id,
+        {
+            method:"PUT",
+        }
+        )
+        .then(res=>
+        {
+            if(res.status >= 200 && res.status < 300)
+            {
+
+                res.json().then(res=>
+                {
+                    orders.value = orders.value.map(item=>
+                    {
+                        if(item.id == order_id)
+                        {
+                                item.status = 4;
+
+                        }
+
+                        return item;
+
+                    })
+                })
+            }
+            else
+                res.json().then(err=>alert("then mal")).catch(err=>error.value = "Error binding json")
+
+        }
+        )
+        .catch(err=> error.value = err)
+    }
 </script>
 
 <template>
 <div>
     <p><a href="/">Home</a> | Orders</p>
-    <p>{{orders}}</p>
+    <p>{{error}}</p>
     <a href="new.html">
         <div id="add-order" class="button">Add order</div>
     </a>
@@ -56,10 +128,13 @@
                 </div>
             </div>
 
-            <div class="order-actions">
-                <div class="status-change" v-if="item.status < 3">{{order_status[item.status + 1] + " >"}}</div>
+            <div class="order-actions"  v-if="item.status < 3">
+                <div @click="change_status(e, item.id)" class="status-change">{{order_status[item.status + 1] + " >"}}</div>
 
-                <div class="cancel-order">Cancel</div>
+                <div @click="cancel(e, item.id)" class="cancel-order">Cancel</div>
+            </div>
+            <div v-else-if="item.status != 4" class="order-actions only-cancel">
+                 <div @click="cancel(e, item.id)" class="cancel-order">Cancel</div>
             </div>
         </div>
         </div>
@@ -83,8 +158,11 @@
 .order
 {
     width: fit-content;
-    margin-right: 2rem;
-    border: 2px solid black;
+    margin-right: 1rem;
+    border: 1px solid black;
+    padding: 0.1rem;
+    border-radius: 3px;
+    margin-bottom: 1rem;
 }
 .header-order
 {
@@ -125,11 +203,13 @@
 {
     border-bottom: 1px solid black;
     margin-bottom: 0.1rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
 }
 
 .order-actions
 {
-    min-height: 4rem;
+    min-height: 5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -165,5 +245,10 @@
 .cancel-order:hover
 {
     background: rgb(233, 28, 28);
+}
+
+.only-cancel
+{
+    justify-content: flex-end !important;
 }
 </style>
