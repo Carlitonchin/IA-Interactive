@@ -31,17 +31,4 @@
     text-decoration: none;
   }
 
-  .button
-  {
-    color:white;
-    background:rgb(222, 35, 35);
-    margin: 1rem;
-    padding: 1rem;
-    border-radius: 5px;
-  }
-
-  .button:hover
-  {
-    background: rgb(249, 20, 20);
-  }
 </style>
