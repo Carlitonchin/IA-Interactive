@@ -6,8 +6,8 @@ import Notification from '../components/Notification.vue';
     const error = ref('')
     const order = ref([])
     const sku_name = {}
-    const url_get_products = "https://localhost:7009/products"
-    const add_order_url = "https://localhost:7009/orders/new"
+    const url_get_products = "https://localhost:9999/products"
+    const add_order_url = "https://localhost:9999/orders/new"
 
     onMounted(()=>
     {

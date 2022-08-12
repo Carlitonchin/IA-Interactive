@@ -1,6 +1,6 @@
 <script setup>
     import {ref, onMounted} from 'vue'
-    const url_get = "https://localhost:7009/orders"
+    const url_get = "https://localhost:9999/orders"
     const orders = ref(0)
 
 

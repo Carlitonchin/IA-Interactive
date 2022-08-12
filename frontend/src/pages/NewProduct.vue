@@ -1,7 +1,7 @@
 <script setup>
     import {ref} from 'vue'
 import Notification from '../components/Notification.vue';
-    const url = "https://localhost:7009/products/new"
+    const url = "https://localhost:9999/products/new"
 
     const sku = ref("")
     const name = ref("")

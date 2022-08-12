@@ -1,9 +1,9 @@
 <script setup>
     import {ref, onMounted, computed} from 'vue'
 import Notification from '../components/Notification.vue';
-    const url_get = "https://localhost:7009/orders"
-    const url_change_status = "https://localhost:7009/orders/change-status/"
-    const url_cancel = "https://localhost:7009/orders/cancel/"
+    const url_get = "https://localhost:9999/orders"
+    const url_change_status = "https://localhost:9999/orders/change-status/"
+    const url_cancel = "https://localhost:9999/orders/cancel/"
 
     const orders = ref([])
     const error = ref("")

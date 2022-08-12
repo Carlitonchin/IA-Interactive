@@ -2,9 +2,9 @@
 import { onMounted, ref } from 'vue'
 import Notification from '../components/Notification.vue';
 
-const url = "https://localhost:7009/products"
-const url_stock = "https://localhost:7009/products/update-stock"
-const delete_url = "https://localhost:7009/products/delete/"
+const url = "https://localhost:9999/products"
+const url_stock = "https://localhost:9999/products/update-stock"
+const delete_url = "https://localhost:9999/products/delete/"
 
 const products = ref([])
 const error = ref("")
