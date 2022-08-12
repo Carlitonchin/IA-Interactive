@@ -268,6 +268,7 @@ cursor: pointer;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
+    margin-left: 4rem;
 }
 
 .status-change
