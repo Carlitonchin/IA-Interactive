@@ -7,7 +7,7 @@
     <p>Email: <a href="mailto:carlozalejandro98@gmail.com">carlozalejandro98@gmail.com</a></p>
     </div>
     <div id="container-buttons">
-      <a href="/products.html" class="button">Products</a>
+      <a href="/products/" class="button">Products</a>
       <a href="/orders.html" class="button">Orders</a>
     </div>
   </div>

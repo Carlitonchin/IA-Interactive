@@ -16,7 +16,7 @@ onMounted(() => {
 <div>
     <p><a href="/">Home</a> | Products</p>
 
-    <a href="/products/new">Create new product</a>
+    <a href="/products/new.html">Create new product</a>
     <h1>{{products}}</h1>
     </div>
 </template>
