@@ -18,12 +18,13 @@ Todo el storage se hizo en la memoria, por lo que si reinicia el programa se per
 ### Requisitos:
 El proyecto fue desarrollado con *Vue3* por lo que es necesario que tenga instalado *Node.js* y *npm* (versiones lo más recientes posible)
 ### Instrucciones:
-<code>
-$ cd frontend/
 
-$ npm install\
-\$ npm run dev
-</code>
+`$ cd frontend/`
+\
+`$ npm install`
+\
+`$ npm run dev`
+
 
 ### Notas:
 La web es bastante fácil e intuitiva, consta de dos secciones:\
