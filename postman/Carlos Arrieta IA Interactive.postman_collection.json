@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "a0844742-acb1-4e35-a937-5dea84f85464",
+		"name": "Carlos Arrieta IA Interactive",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14566944"
+	},
+	"item": [
+		{
+			"name": "Get products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/products/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\":\"cafe\",\n  \"stock\":5,\n  \"sku\":\"003\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:9999/products/new",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"products",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product Stock",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"sku\":\"005\",\n  \"cant\":-8,\n  \"comment\":\"negative values for cant reduce the stock, positive values increase\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:9999/products/update-stock",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"products",
+						"update-stock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete product (add sku of product at the end of url)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/products/delete/005",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"products",
+						"delete",
+						"005"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/orders",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n [\n  {\n    \"sku\":\"002\",\n    \"cant\":1\n  },\n  {\n    \"sku\":\"003\",\n    \"cant\":1\n  }\n  ]\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:9999/orders/new",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"orders",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change status for an order",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/orders/change-status/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"orders",
+						"change-status",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Order",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9999/orders/cancel/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"orders",
+						"cancel",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
