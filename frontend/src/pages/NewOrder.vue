@@ -103,6 +103,11 @@ import Notification from '../components/Notification.vue';
 
 <template>
 <Notification>
+    <div>
+    <p><a href="/">Home</a> |
+    <a href="/orders/">Orders</a> |
+    New Order
+    </p>
 <div id="container">
     <a href="/orders/" id="orders_link" style="display:none;"></a>
     <div id="container-order">
@@ -152,6 +157,7 @@ import Notification from '../components/Notification.vue';
     </table>
     <p v-else style="text-align: center">There are no products</p>
 
+</div>
 </div>
 </Notification>
 </template>
