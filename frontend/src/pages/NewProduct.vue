@@ -6,8 +6,7 @@
     const name = ref("")
     const stock = ref(1)
 
-    const response = ref({})
-    const error = ref({})
+    const error = ref("")
 
     function handle_submit(e)
     {
@@ -36,7 +35,8 @@
             }
             else
             {
-                res.json().then(err => error.value = err)
+                res.json().then(err => error.value = err.error)
+                .catch(err=> error.value = "Error at json binding")
             }
         })
         .catch(err=>error.value = err);
@@ -48,7 +48,7 @@
 <template>
 
 <div id="container">
-    <a href="/products/" id="products_link">Link</a>
+    <a href="/products/" id="products_link"  style="display:none">Link</a>
 <h1>New Product</h1>
 <form method="post"  @submit="handle_submit">
 <div class="form-item">
@@ -63,12 +63,11 @@
 
 <div class="form-item">
     <label for="stock">Stock</label>
-    <input v-model="stock" min="1" name="stock" id="stock"/>
+    <input type="number" v-model="stock" min="1" name="stock" id="stock"/>
 </div>
 
 <input class="button" type="submit" value="Create"/>
 </form>
-<p>{{response}}</p>
 <p style="color:red">{{error}}</p>
 </div>
 
