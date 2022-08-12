@@ -80,8 +80,8 @@ namespace backend.Handlers
             if(order == null)
                 return Results.NotFound(new Error($"order_id = {order_id} does not exist"));
 
-            if(order.Status == Status.Canceled)
-                return Results.BadRequest(new Error("An canceled order cannot change his status"));
+            if(order.Status == Status.Delivered)
+                return Results.BadRequest(new Error("An delivered order only can change his status to canceled"));
 
             order = this._orderServ.ChangeOrderStatus(order);
 
