@@ -48,6 +48,7 @@
 <template>
 
 <div id="container">
+    <p><a href="/">Home</a> | <a href="/products/">Products</a> | New Product</p>
     <a href="/products/" id="products_link"  style="display:none">Link</a>
 <h1>New Product</h1>
 <form method="post"  @submit="handle_submit">
