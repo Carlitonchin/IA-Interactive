@@ -1,5 +1,6 @@
 <script setup>
     import {ref} from 'vue'
+import Notification from '../components/Notification.vue';
     const url = "https://localhost:7009/products/new"
 
     const sku = ref("")
@@ -46,6 +47,7 @@
 </script>
 
 <template>
+<Notification>
 <div>
 
     <p><a href="/">Home</a> | <a href="/products/">Products</a> | New Product</p>
@@ -74,7 +76,7 @@
 </div>
 
 </div>
-
+</Notification>
 </template>
 
 <style scoped>

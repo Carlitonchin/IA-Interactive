@@ -1,5 +1,6 @@
 <script setup>
     import { onMounted, ref } from 'vue';
+import Notification from '../components/Notification.vue';
 
     const products = ref([])
     const error = ref('')
@@ -101,6 +102,7 @@
 </script>
 
 <template>
+<Notification>
 <div id="container">
     <a href="/orders/" id="orders_link" style="display:none;"></a>
     <div id="container-order">
@@ -151,6 +153,7 @@
     <p v-else style="text-align: center">There are no products</p>
 
 </div>
+</Notification>
 </template>
 
 <style scoped>

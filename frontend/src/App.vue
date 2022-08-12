@@ -1,5 +1,11 @@
 
+<script setup>
+
+import Notification from './components/Notification.vue';
+</script>
+
 <template>
+<Notification>
   <div id="container">
     <div>
     <h1>Welcome to <span id="welcome-span">IA’s Software Engineer Exam</span></h1>
@@ -11,6 +17,7 @@
       <a href="/orders/" class="button m1">Orders</a>
     </div>
   </div>
+  </Notification>
 </template>
 
 <style scoped>

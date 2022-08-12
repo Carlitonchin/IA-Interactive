@@ -1,5 +1,6 @@
 <script setup>
     import {ref, onMounted, computed} from 'vue'
+import Notification from '../components/Notification.vue';
     const url_get = "https://localhost:7009/orders"
     const url_change_status = "https://localhost:7009/orders/change-status/"
     const url_cancel = "https://localhost:7009/orders/cancel/"
@@ -114,7 +115,8 @@
 </script>
 
 <template>
-<div>
+<Notification>
+    <div>
     <p><a href="/">Home</a> | Orders</p>
     <p>{{error}}</p>
     <a href="new.html">
@@ -163,6 +165,7 @@
         </div>
     </div>
     </div>
+    </Notification>
 </template>
 
 <style scoped>

@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue'
+import Notification from '../components/Notification.vue';
 
 const url = "https://localhost:7009/products"
 const url_stock = "https://localhost:7009/products/update-stock"
@@ -79,6 +80,7 @@ function delete_product(e, sku)
 </script>
 
 <template>
+<Notification>
 <div>
     <p><a href="/">Home</a> | Products</p>
     <p id="error">{{error}}</p>
@@ -114,6 +116,7 @@ function delete_product(e, sku)
     </table>
     <p v-else style="text-align: center">There are no products</p>
     </div>
+    </Notification>
 </template>
 
 <style scoped>
