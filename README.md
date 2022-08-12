@@ -7,7 +7,7 @@ El proyecto contiene 2 subproyectos:\
 El proyecto fue desarrollado con asp.net core 6.0, por lo que se debe tener instalado una versión del *sdk* o del *runtime* compatibles con la 6.0
 ### Instrucciones:
 <code> $ cd backend/
-\
+
 \$ dotnet run
 </code>\
 Estas instrucciones van a iniciar un server escuchando peticiones por el puerto *9999*\
