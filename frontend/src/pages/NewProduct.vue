@@ -46,9 +46,10 @@
 </script>
 
 <template>
+<div>
 
-<div id="container">
     <p><a href="/">Home</a> | <a href="/products/">Products</a> | New Product</p>
+    <div id="container">
     <a href="/products/" id="products_link"  style="display:none">Link</a>
 <h1>New Product</h1>
 <form method="post"  @submit="handle_submit">
@@ -72,6 +73,7 @@
 <p style="color:red">{{error}}</p>
 </div>
 
+</div>
 
 </template>
 
