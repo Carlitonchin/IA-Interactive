@@ -10,7 +10,9 @@ El proyecto fue desarrollado con asp.net core 6.0, por lo que se debe tener inst
 \
 \$ dotnet run
 </code>\
-Estas instrucciones van a iniciar un server escuchando peticiones por el puerto *9999*
+Estas instrucciones van a iniciar un server escuchando peticiones por el puerto *9999*\
+\
+Todo el storage se hizo en la memoria, por lo que si reinicia el programa se perderán todos los datos
 
 ## Frontend
 ### Requisitos:
