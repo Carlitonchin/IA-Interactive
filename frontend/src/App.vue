@@ -1,47 +1,47 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <div id="container">
+    <div>
+    <h1>Welcome to <span id="welcome-span">IA’s Software Engineer Exam</span></h1>
+    <h3>I'm Carlos Arrieta, Computer Scientist and Fullstack Developer</h3>
+    <p>Email: <a href="mailto:carlozalejandro98@gmail.com">carlozalejandro98@gmail.com</a></p>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <div id="container-buttons">
+      <a href="/products.html" class="button">Products</a>
+      <a href="/orders.html" class="button">Orders</a>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+#container
+{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 50vh;
+  margin-top: 15vh;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+  #welcome-span{
+    color:rgb(222, 35, 35);
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
+  a{
+    text-decoration: none;
   }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  .button
+  {
+    color:white;
+    background:rgb(222, 35, 35);
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
   }
-}
+
+  .button:hover
+  {
+    background: rgb(249, 20, 20);
+  }
 </style>
